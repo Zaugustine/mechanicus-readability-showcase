@@ -44,24 +44,73 @@ before images are not the original-font baseline shown above.
 | Canticle | ![Canticle intermediate](evidence/compare-2-before.png) | ![Canticle final](evidence/compare-2-after.png) |
 | Battle tooltip | ![Battle intermediate](evidence/compare-3-before.png) | ![Battle final](evidence/compare-3-after.png) |
 
+## Latest follow-up: larger text within the original outer frames
+
+**11 October 2026, local revision V5:** follow-up work addresses small text in
+troop details, sector introductions, canticle effects and unlock conditions,
+ship upgrades, difficulty descriptions, load-list information and additional
+UI labels. The sector introduction and troop title backgrounds have been
+returned to their original outer dimensions. The new-game outer window and
+button positions remain unchanged; internal text layout has been adjusted.
+
+### Sector introduction
+
+All three paragraphs and the final sentence fit within the original outer frame:
+
+![Sector introduction, latest local revision](evidence/ubjao-original-frame-full.png)
+
+### Canticle effects and unlock conditions
+
+Larger effect descriptions wrap within their cards; the list remains scrollable:
+
+![Canticle list, upper portion](evidence/canticles-effects-top-full.png)
+
+### More full-window evidence
+
+| Sample | Latest capture and observation |
+| --- | --- |
+| Canticle list, lower portion | [Full window](evidence/canticles-effects-bottom-full.png): effects, unlock conditions and a detail card |
+| Ship upgrade | [Full window](evidence/ship-upgrade-full.png): cognition-capacity tooltip |
+| Casual difficulty | [Full window](evidence/difficulty-casual-final-full.png): long description fits above Other Settings |
+| Very Hard difficulty | [Full window](evidence/difficulty-very-hard-final-full.png): description fits in the same outer window |
+| Load list | [Full window](evidence/load-list-full.png): location, mission and awakening information |
+
+These seven captures are unmodified 2940 × 1846 full-window images from the
+Chinese game. They document the current result; they are not matched before/after
+pairs. The load-list image includes a temporary test save used to replay a popup;
+that test copy was subsequently removed from the game's save directory.
+A replacement screenshot showing the latest troop text panel is still pending;
+the archived V5 troop capture did not retain the visible tooltip.
+
 ## Scope and validation
 
-The local fix addresses the Chinese font resource and selected small-text
+The local fix addresses the Chinese font resource and selected UI text
 components, including dynamically created battle tooltips and canticle cards.
-Previously recorded checks covered selected Chinese equipment, skills,
-discipline, mission, battle and canticle screens. Full language, resolution,
-controller and content coverage has not been established.
+Testing used the original game's macOS Steam version 1.4.11, build 14431362.
+The earlier equipment comparison and detail crops above document the second
+patch; the new captures document the later follow-up.
 
-**Follow-up status (11 October 2026):** further use and a static UI audit found
-remaining small text in troop details and other descriptions and labels.
-Additional changes are being investigated; they are not included in the
-validated screenshots above. This is an improvement for the sampled screens,
-not a claim that every small-text issue has been resolved.
+The latest revision adds 178 previously unmodified text-component targets and
+revises four earlier text targets. These are serialized component counts,
+including repeated UI instances, not 178 separately verified screens.
 
-The private review tool passed nine tests and reproduced all seven previously
-verified patch outputs exactly. Those results are reported here; this showcase
-alone does not let readers independently rebuild the patch. Complete technical
-materials can be discussed privately with the game's team.
+Local checks confirmed the intended field changes, unchanged bytes outside
+targeted objects, installed-file hashes, and original outer-frame transforms
+for the sector popup, two troop title backgrounds and the new-game dialog.
+Six installer tests passed, covering apply/restore, running-game and unknown-file
+refusal, and rollback after a simulated replacement failure. The complete
+restore-to-original and reapply workflow was exercised. The 36 original save
+files remained unchanged. These are locally reported checks; the limited public
+showcase does not contain the implementation needed to reproduce them.
+
+**Remaining validation:** not all combat, mission-result, permadeath, rename,
+discipline-node or missing-equipment states have been exercised in the latest
+revision. Other troop levels, sector texts, UI copies, languages, resolutions
+and controller interactions also need broader testing. Further low-font-size
+candidates remain under investigation; not every candidate is a visible defect.
+This is not a claim that every small-text issue has been resolved.
+
+Complete technical materials can be discussed privately with the game's team.
 
 ## Small code example: file verification
 
